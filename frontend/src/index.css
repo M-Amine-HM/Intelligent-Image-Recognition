@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color: #f5f7ff;
+  background-color: #0a0c12;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --ink: #f5f7ff;
+  --muted: #b2b8cc;
+  --accent: #4cc9f0;
+  --accent-2: #f72585;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, rgba(76, 201, 240, 0.15), transparent 55%),
+    linear-gradient(135deg, #0b0e14 0%, #101522 50%, #0b0e14 100%);
+  color: var(--ink);
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(0px);
+  opacity: 0.35;
+  z-index: -1;
+  animation: drift 14s ease-in-out infinite;
+}
+
+body::before {
+  top: -120px;
+  right: -140px;
+  background: radial-gradient(circle, rgba(247, 37, 133, 0.4), transparent 60%);
+}
+
+body::after {
+  bottom: -160px;
+  left: -120px;
+  background: radial-gradient(circle, rgba(76, 201, 240, 0.35), transparent 65%);
+  animation-delay: -6s;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes drift {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(20px);
+  }
+}
