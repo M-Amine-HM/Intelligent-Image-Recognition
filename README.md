@@ -1,4 +1,4 @@
-# intelligent Image Recognition
+# Intelligent Image Recognition
 
 A full-stack image classification app built with FastAPI and a React (Vite) frontend. The backend loads a Hugging Face ViT model and returns top-5 predictions for uploaded images.
 
