@@ -1,6 +1,6 @@
 # Intelligent Image Recognition
 
-A full-stack image classification app built with FastAPI and a React (Vite) frontend. The backend loads a Hugging Face ViT model and returns top-5 predictions for uploaded images.
+A full-stack image classification app built with FastAPI and a React (Vite) frontend. The backend loads a Hugging Face ViT model locally and returns top-5 predictions for uploaded images.
 
 ## Features
 - FastAPI backend with a /classify endpoint for image uploads
@@ -13,6 +13,11 @@ backend/   # FastAPI API
 frontend/  # React (Vite) client
 ```
 
+## How It Runs (Local vs Hugging Face API)
+- Local inference: the FastAPI server runs the model locally using the Transformers library.
+- Hugging Face usage: the first run may download model weights from Hugging Face if not cached. If you use a private model, set `HF_TOKEN`.
+- No hosted inference API calls are required for normal operation.
+
 ## Setup
 
 ### Backend
@@ -21,14 +26,14 @@ frontend/  # React (Vite) client
    ```
    pip install -r backend/requirements.txt
    ```
-3. (Optional) Create a .env file in backend/ and set:
+3. (Optional) Create a .env file in backend/ and set environment variables:
    ```
    HF_MODEL=google/vit-base-patch16-224
    HF_TOKEN=your_hf_token
    ```
-4. Run the API:
+4. Run the API from the repository root:
    ```
-   uvicorn app.main:app --reload
+   uvicorn app.main:app --reload --app-dir backend
    ```
 
 ### Frontend
@@ -47,6 +52,10 @@ frontend/  # React (Vite) client
 - POST /classify
   - Form field: file (image)
   - Response: top-5 predictions with label and score
+
+## Environment Variables
+- `HF_MODEL`: Hugging Face model ID to load (default: `google/vit-base-patch16-224`).
+- `HF_TOKEN`: Hugging Face access token (required only for private models).
 
 ## Notes
 - The backend enables CORS for http://localhost:5173.
