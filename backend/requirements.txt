@@ -5,3 +5,5 @@ torch==2.3.1
 pillow==10.3.0
 python-dotenv==1.0.1
 numpy<2
+passlib==1.7.4
+python-jose[cryptography]==3.3.0
